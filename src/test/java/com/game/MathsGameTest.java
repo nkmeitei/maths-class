@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class MathsGameTest {
 
-    private MathsGame gameUnderTest = new MathsGameUnderTest();
+    private MathsGame gameUnderTest = MathsGame.getInstance();
     Stream<Integer> input = null;
 
     // Start of areMultiples testcases
@@ -135,8 +135,4 @@ public class MathsGameTest {
         assertEquals("FizzBuzz", iter.next());
     }
     // End of Stage 2 (doMatch) tests
-}
-
-class MathsGameUnderTest extends MathsGame{
-
 }

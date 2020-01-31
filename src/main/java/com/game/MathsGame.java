@@ -18,6 +18,18 @@ public class MathsGame {
 
     private static final String FIZZ = "Fizz";
     private static final String BUZZ = "Buzz";
+    private static MathsGame instance;
+
+    private MathsGame(){
+    }
+
+    public static MathsGame getInstance() {
+        if (instance == null){
+            instance = new MathsGame();
+        }
+        return instance;
+    }
+
     /**
      * Condition 1: The number is divisible by 3
      * Condition 2: The number is divisible by 5
@@ -25,7 +37,7 @@ public class MathsGame {
      * Returns "Fizz" if only Condition 1 is met.
      * Returns "Buzz" if only Condition 2 is met.
      */
-    protected Function<Integer, String> isMultiple =
+    private Function<Integer, String> isMultiple =
         input -> {
             String fizzPart = (input % 3 == 0 ? FIZZ : "");
             String buzzPart = (input % 5 == 0 ? BUZZ : "");
@@ -41,7 +53,7 @@ public class MathsGame {
      * returns "Buzz" if only condition 1 is met
      * @see #isMultiple
      */
-    protected BiFunction<Integer, Function<Integer, String>, String> doMatch =
+    private BiFunction<Integer, Function<Integer, String>, String> doMatch =
     (input,  isMultiple)-> {
         String isMultipleResult = isMultiple.apply(input);
         String inputStr = String.valueOf(input);
